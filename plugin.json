@@ -1,5 +1,5 @@
 {
-    "ID": "9e5f9db0-916f-4729-9b6f-2f9465f85316",
+    "ID": "9e5f9db0916f47299b6f2f9465f85316",
     "ActionKeyword": "lp",
     "Name": "LastPass WSL",
     "Description": "LastPass plugin for WOX using lpass in WSL",
