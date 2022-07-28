@@ -5,6 +5,7 @@ Provides a means to access the [LastPass CLI](https://github.com/lastpass/lastpa
 ## Requirements
 - WSL
 - `lpass` inside default WSL distro
+- Python v3.10 on the Windows host
 
 ## Usage
 
