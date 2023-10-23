@@ -5,7 +5,7 @@ Provides a means to access the [LastPass CLI](https://github.com/lastpass/lastpa
 ## Requirements
 - WSL
 - `lpass` inside default WSL distro
-- Python v3.10 on the Windows host
+- Python >= v3.10 on the Windows host
 
 ## Usage
 
@@ -14,6 +14,8 @@ Use the keyword `lp` to start your search
 ![Search](images/search.png)
 ![Context Menu](images/context_menu.png)
 
+## Installation
+Just clone that repo into your Wox plugin directory (e.g. `%APPDATA%\Wox\Plugins`) and restart Wox.
 
 ## What works
 - Simple search through vault with multiple keyword parts
@@ -21,7 +23,7 @@ Use the keyword `lp` to start your search
 - Copy password
 
 ## Open Points
-- Improve search to combine groups, names and usernames
-- Display username for each entry in search
-- (Re-)Login to `lpass` using the Powershell after login has expired
-- Copy from other fields of non-password LastPass entries
+- [ ] Improve search to combine groups, names and usernames
+- [x] Display username for each entry in search
+- [ ] (Re-)Login to `lpass` using the Powershell after login has expired
+- [ ] Copy from other fields of non-password LastPass entries
