@@ -60,7 +60,8 @@ class LastPassSearch(Wox):
             shell=True,
         )
         output = ls_process.stdout.readlines()
-        regex_pattern = re.compile(r"(.*)\/(.*)\s\[id:\s(\d+)\] (.*)")
+        # matches the following pattern: group/name [id: 927805915264615432] username
+        regex_pattern = re.compile(r"([^\/]*)\/(.*?)\s\[id:\s(\d+)\] (.*)")
         formatted = []
         for line in output:
             entry_str = line.decode("utf-8")
