@@ -54,30 +54,31 @@ class LastPassSearch(Wox):
             )
 
         ls_process = subprocess.Popen(
-            ["powershell.exe", "wsl --exec bash -c '/usr/bin/lpass ls --sync=no --color=never'"],
+            ["powershell.exe", 'wsl --exec bash -c "/usr/bin/lpass ls --sync=no --color=never --format=\'%aN [id: %ai] %au\'"'],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             shell=True,
         )
         output = ls_process.stdout.readlines()
-        regex_pattern = re.compile(r"(.*)\/(.*)\s\[id:\s(\d+)\]")
+        regex_pattern = re.compile(r"(.*)\/(.*)\s\[id:\s(\d+)\] (.*)")
         formatted = []
         for line in output:
             entry_str = line.decode("utf-8")
             matches = regex_pattern.match(entry_str)
             if matches:
+                group, name, acc_id, username = matches.group(1), matches.group(2), matches.group(3), matches.group(4)
                 lp_entry = LastPassEntry(
-                    lp_id=matches.group(3),
+                    lp_id=acc_id,
                     action_id="default",
-                    group=f"Group: {matches.group(1)}",
-                    name=matches.group(2),
+                    group=f"{username}",
+                    name=f"{name}",
                 )
                 formatted.append(lp_entry)
             else:
                 lp_entry = LastPassEntry(
                     lp_id=search_term,
                     action_id="sign_in",
-                    group="Using the command: wsl --exec bash -c '/usr/bin/lpass login --trust USERNAME'",
+                    group=f"Using the command: wsl --exec bash -c '/usr/bin/lpass login --trust USERNAME'",
                     name="Sign in to LastPass in the PowerShell",
                 )
                 formatted.append(lp_entry)
