@@ -121,9 +121,9 @@ class LastPassSearch(Wox):
         username = output[0].decode("utf-8")
         self._copy_text_to_clipboard(username)
 
+
     def sign_in(self, username: str):
-        login_process = subprocess.Popen(["powershell.exe"])
-        # How to fill in the username into the powershell process using stdin?
+        subprocess.Popen(["lp_login.cmd"])
 
     def context_menu(self, lp_id: str):
         """Function that is called when context menu is triggered (shift-enter).

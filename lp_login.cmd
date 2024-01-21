@@ -1,0 +1,1 @@
+powershell "wsl --exec bash -c 'export LPASS_AGENT_TIMEOUT=28800 && lpass ls 1> /dev/null'"
